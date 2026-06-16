@@ -227,3 +227,22 @@ main {
   }
 }
 
+/* ---------------------------------------------------------
+   PLAYER PAGE — SMALLER CARD SIZE
+--------------------------------------------------------- */
+
+.player-profile .card {
+  width: 220px;        /* smaller width */
+  aspect-ratio: 3 / 4; /* keeps perfect card shape */
+}
+
+.player-profile .card-inner {
+  border-radius: 16px;
+}
+
+.player-profile .card-front,
+.player-profile .card-back {
+  border-radius: 16px;
+}
+
+
