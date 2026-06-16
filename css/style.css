@@ -232,7 +232,7 @@ main {
 --------------------------------------------------------- */
 
 .player-profile .card {
-  width: 220px;        /* smaller width */
+  width: 175px;        /* smaller width */
   aspect-ratio: 3 / 4; /* keeps perfect card shape */
 }
 
