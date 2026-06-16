@@ -1,1 +1,229 @@
+/* ---------------------------------------------------------
+   NEO‑TOKYO HOLOGRAM THEME — GLOBAL STYLES
+   Palette: Purple (#a66bff) + Cyan (#4df3ff)
+   Background: Holographic Grid
+   Card Style: Neon Glass Panel + Full 3D Flip
+--------------------------------------------------------- */
+
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap');
+
+/* ROOT VARIABLES */
+:root {
+  --bg-dark: #05010d;
+  --grid-line: rgba(77, 243, 255, 0.15);
+  --cyan: #4df3ff;
+  --purple: #a66bff;
+  --white: #f8f8ff;
+
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.18);
+
+  --glow-cyan: 0 0 12px #4df3ff, 0 0 24px #4df3ff;
+  --glow-purple: 0 0 12px #a66bff, 0 0 24px #a66bff;
+}
+
+/* GLOBAL RESET */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-dark);
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* HOLOGRAPHIC GRID BACKGROUND */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, transparent 0%, rgba(166,107,255,0.08) 100%),
+    repeating-linear-gradient(
+      to right,
+      var(--grid-line) 0px,
+      var(--grid-line) 1px,
+      transparent 1px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--grid-line) 0px,
+      var(--grid-line) 1px,
+      transparent 1px,
+      transparent 80px
+    );
+  z-index: -10;
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+  text-shadow: var(--glow-purple);
+}
+
+/* NAV SPACING FIX */
+main {
+  padding-top: 80px;
+}
+
+/* ---------------------------------------------------------
+   HERO SECTION
+--------------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding: 120px 20px 80px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+/* ---------------------------------------------------------
+   FEATURED CARDS GRID
+--------------------------------------------------------- */
+.cards-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+}
+
+/* ---------------------------------------------------------
+   CARD — NEON GLASS PANEL + 3D FLIP
+--------------------------------------------------------- */
+.card {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  perspective: 1400px;
+  position: relative;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.9s ease;
+  transform-style: preserve-3d;
+  border-radius: 20px;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* FRONT + BACK */
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 0 20px rgba(77,243,255,0.2);
+}
+
+/* FRONT IMAGE */
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* BACK FACE */
+.card-back {
+  transform: rotateY(180deg);
+  position: relative;
+}
+
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+}
+
+/* STATS ON BACK */
+.stats {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid var(--cyan);
+  border-radius: 10px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9rem;
+  text-shadow: var(--glow-cyan);
+  backdrop-filter: blur(6px);
+}
+
+/* ---------------------------------------------------------
+   PLAYER PROFILE PAGE
+--------------------------------------------------------- */
+.player-profile {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 120px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.player-info {
+  flex: 1 1 320px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(166,107,255,0.25);
+}
+
+.player-info h2 {
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 14px;
+  border: 1px solid var(--cyan);
+  border-radius: 10px;
+  color: var(--cyan);
+  text-decoration: none;
+  font-family: "Orbitron", sans-serif;
+  transition: 0.3s ease;
+}
+
+.back-btn:hover {
+  background: var(--cyan);
+  color: var(--bg-dark);
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------------- */
+@media (max-width: 700px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
 
